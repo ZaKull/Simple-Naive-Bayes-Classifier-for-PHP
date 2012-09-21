@@ -97,6 +97,12 @@ class NaiveBayesClassifierStoreMySQL extends NaiveBayesClassifierStore {
 	public function trainTo($words, $set) {
 		if(!$this->isBlacklisted($words)) {
 			$sql = "
+				UPDATE IGNORE
+					{$this->trainerTable}
+				SET train_frequency = train_frequency + 1
+				WHERE train_words = '{$words}' AND train_set = '{$set}'";
+			$res = $this->_exec($sql);
+			$sql = "
 				INSERT IGNORE INTO 
 					{$this->trainerTable}
 						(train_words, train_set)
