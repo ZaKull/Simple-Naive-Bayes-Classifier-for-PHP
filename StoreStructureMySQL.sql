@@ -29,10 +29,11 @@
 CREATE TABLE `blacklists` (
   `word` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`word`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE `trains` (
   `train_words` varchar(255) NOT NULL DEFAULT '',
   `train_set` varchar(50) NOT NULL DEFAULT '',
+  `train_frequency` INT(10) NOT NULL DEFAULT '1',
   PRIMARY KEY (`train_words`,`train_set`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
